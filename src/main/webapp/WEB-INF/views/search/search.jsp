@@ -1,38 +1,6 @@
 <%@ page session="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="resources/js/jquery.tmpl.min.js"></script>
-<style type="text/css">
-      body {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-      }
-
-      .form-search {
-        max-width: 300px;
-        padding: 19px 29px 29px;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
-        -webkit-border-radius: 5px;
-           -moz-border-radius: 5px;
-                border-radius: 5px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                box-shadow: 0 1px 2px rgba(0,0,0,.05);
-      }
-      .form-search .form-search-heading,
-      .form-search .checkbox {
-        margin-bottom: 10px;
-      }
-      .form-search input[type="text"],
-      .form-search input[type="password"] {
-        font-size: 16px;
-        height: auto;
-        margin-bottom: 15px;
-        padding: 7px 9px;
-      }
-
-</style>
 
 <c:if test="${not empty message}">
 <div class="${message.type.cssClass}">${message.text}</div>
@@ -40,7 +8,7 @@
 
 <c:url value="/search" var="searchUrl" />
 
-<form class="form-search" action="${searchUrl}" method="POST">
+<form class="form-horizontal" class="form-search" action="${searchUrl}" method="POST">
         <h2 class="form-search-heading">Search Jobs</h2>
         <input type="text" class="input-block-level" placeholder="Comma Seperated List of Skills" name="skills" id="skills">
          <textarea rows="5" class="input-block-level" placeholder="Address" name="address" id="address"></textarea>
