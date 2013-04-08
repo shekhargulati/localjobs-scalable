@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 <%@ page session="false" %>
 
-<form id="signin" action="<c:url value="/signin/authenticate" />" method="post">
+<form class="form-horizontal well" id="signin" action="<c:url value="/signin/authenticate" />" method="post">
 	<div class="formInfo">
   		<c:if test="${param.error eq 'bad_credentials'}">
   		<div class="error">
