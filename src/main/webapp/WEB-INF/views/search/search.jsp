@@ -8,16 +8,27 @@
 
 <c:url value="/search" var="searchUrl" />
 
-<form class="form-horizontal" class="form-search" action="${searchUrl}" method="POST">
-        <h2>Search Jobs</h2>
-        <input type="text" placeholder="Comma Seperated List of Skills" name="skills" id="skills">
-         <textarea rows="5" placeholder="Address" name="address" id="address"></textarea>
-         <p class="lead">choose one of address or latitude and longitude</p>
-        <input type="text" placeholder="Latitude" name="latitude" id="latitude">
-        <input type="text" placeholder="Longitude" name="longitude" id="longitude">
-        <input type="text" placeholder="Within Distance (in kms)" name="withinDistance" id="withinDistance">
-       
-        <button class="btn btn-large btn-primary" type="submit" id="searchJobs">Search Jobs</button>
+<form class="form-horizontal well" id="searchJobs" action="${searchUrl}" method="POST">
+	<fieldset>
+		<legend>Search Jobs</legend>
+		<div class="control-group">
+            <label class="control-label" for="skills">Skills</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="skills" placeholder="Comma Seperated List of Skills">
+              <p class="help-block">Enter skills you want to search jobs for</p>
+            </div>
+         </div>
+         
+         <div class="control-group">
+            <label class="control-label" for="address">Address</label>
+            <div class="controls">
+              <textarea rows="5" placeholder="Address" name="address" id="address"></textarea>
+              <p class="help-block">Address near which you want to find jobs</p>
+            </div>
+         </div>
+         
+         <button class="btn btn-large btn-primary" type="submit" id="searchJobs">Search Jobs</button>
+	</fieldset>
 </form>
 
 <div id="results">
