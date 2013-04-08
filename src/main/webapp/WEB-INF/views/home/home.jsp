@@ -8,7 +8,7 @@
 </p>
 
 <p class="lead">Recommended Jobs</p>
-<table class="table table-striped" id="recommendedJobs" title="Recommended Jobs">
+<table class="table table-bordered table-striped table-hover" id="recommendedJobs" title="Recommended Jobs">
 	<tr>
 		<th>Job Title</th>
 		<th>Company Name</th>
@@ -40,7 +40,7 @@
 <hr>
 
 <p class="lead">Jobs Applied By You</p>
-<table class="table table-striped" id="appliedJobs" title="Applied Jobs">
+<table class="table table-bordered table-striped table-hover" id="appliedJobs" title="Applied Jobs">
 	<tr>
 		<th>Job Title</th>
 		<th>Company Name</th>
