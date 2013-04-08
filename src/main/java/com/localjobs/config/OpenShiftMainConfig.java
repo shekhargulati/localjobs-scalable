@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -18,16 +17,13 @@ import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.jdbc.datasource.init.DataSourceInitializer;
-import org.springframework.jdbc.datasource.init.DatabasePopulator;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.localjobs.domain.Account;
 import com.localjobs.mongodb.repository.JobRepository;
 import com.mongodb.Mongo;
 
@@ -41,14 +37,17 @@ public class OpenShiftMainConfig {
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
-		entityManagerFactory.setDataSource(dataSource());
-		entityManagerFactory.setPersistenceUnitName("jobfinder-postgresql");
 		HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
 		hibernateJpaVendorAdapter.setDatabase(Database.POSTGRESQL);
 		hibernateJpaVendorAdapter.setGenerateDdl(true);
 		hibernateJpaVendorAdapter.setShowSql(true);
+		
+		
+		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactory.setJpaVendorAdapter(hibernateJpaVendorAdapter);
+		entityManagerFactory.setPackagesToScan(Account.class.getPackage().getName());
+		entityManagerFactory.setDataSource(dataSource());
+		
 		return entityManagerFactory;
 	}
 
@@ -89,23 +88,6 @@ public class OpenShiftMainConfig {
 	@Bean
 	public PropertySourcesPlaceholderConfigurer propertyPlaceHolderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
-	}
-	
-//	@Bean
-	public DataSourceInitializer dataSourceInitializer(){
-		DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
-		dataSourceInitializer.setDataSource(dataSource());
-		dataSourceInitializer.setEnabled(true);
-		dataSourceInitializer.setDatabasePopulator(databasePopulator());
-		return dataSourceInitializer;
-	}
-
-	private DatabasePopulator databasePopulator() {
-		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-		populator.addScript(new ClassPathResource("drop-tables.sql"));
-		populator.addScript(new ClassPathResource("create-tables.sql"));
-		populator.addScript(new ClassPathResource("JdbcUsersConnectionRepository.sql", JdbcUsersConnectionRepository.class));
-		return populator;
 	}
 	
 	@Bean
