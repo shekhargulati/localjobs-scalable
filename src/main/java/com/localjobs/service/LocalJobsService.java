@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.localjobs.domain.Job;
 
-public interface JobFinderService {
+public interface LocalJobsService {
 	List<Job> findAllJobs();
 
 	Job findOneJob(String jobId);

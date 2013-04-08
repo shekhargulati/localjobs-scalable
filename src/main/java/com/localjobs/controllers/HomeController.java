@@ -19,7 +19,7 @@ import com.localjobs.googleapis.DistanceResponse;
 import com.localjobs.googleapis.GoogleDistanceClient;
 import com.localjobs.jdbc.repository.AccountRepository;
 import com.localjobs.service.CoordinateFinder;
-import com.localjobs.service.JobFinderService;
+import com.localjobs.service.LocalJobsService;
 import com.localjobs.utils.SecurityUtils;
 
 @Controller
@@ -29,7 +29,7 @@ public class HomeController {
 
 	private final AccountRepository accountRepository;
 	
-	private JobFinderService jobFinderService;
+	private LocalJobsService localJobsService;
 	
 	@Inject
 	private GoogleDistanceClient googleDistanceClient;
@@ -40,10 +40,10 @@ public class HomeController {
 	@Inject
 	public HomeController(
 			Provider<ConnectionRepository> connectionRepositoryProvider,
-			AccountRepository accountRepository,JobFinderService jobFinderService) {
+			AccountRepository accountRepository,LocalJobsService localJobsService) {
 		this.connectionRepositoryProvider = connectionRepositoryProvider;
 		this.accountRepository = accountRepository;
-		this.jobFinderService = jobFinderService;
+		this.localJobsService = localJobsService;
 	}
 
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
@@ -70,13 +70,13 @@ public class HomeController {
 	}
 
 	private List<JobDistanceVo> appliedJobs(double latitude, double longitude, String user) {
-		List<Job> jobs = jobFinderService.appliedJobs(user);
+		List<Job> jobs = localJobsService.appliedJobs(user);
 		return toJobDistanceVo(latitude, longitude, jobs);
 	}
 
 	private List<JobDistanceVo> recommendedJobs(double latitude,double longitude,String[] skills) throws Exception{
 		
-		List<Job> jobs = jobFinderService.recommendJobs(latitude, longitude, skills, SecurityUtils
+		List<Job> jobs = localJobsService.recommendJobs(latitude, longitude, skills, SecurityUtils
 				.getCurrentLoggedInUsername());
 		return toJobDistanceVo(latitude, longitude, jobs);
 	}

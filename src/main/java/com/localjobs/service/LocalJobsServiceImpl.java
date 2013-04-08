@@ -16,7 +16,7 @@ import com.localjobs.domain.Job;
 import com.localjobs.mongodb.repository.JobRepository;
 
 @Service
-public class JobFinderServiceImpl implements JobFinderService {
+public class LocalJobsServiceImpl implements LocalJobsService {
 
 	private MongoTemplate mongoTemplate;
 
@@ -24,7 +24,7 @@ public class JobFinderServiceImpl implements JobFinderService {
 	private JobRepository jobRepository;
 	
 	@Inject
-	public JobFinderServiceImpl(MongoTemplate mongoTemplate) {
+	public LocalJobsServiceImpl(MongoTemplate mongoTemplate) {
 		this.mongoTemplate = mongoTemplate;
 	}
 

@@ -15,8 +15,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.index.GeospatialIndex;
 
 import com.localjobs.domain.Job;
-import com.localjobs.service.JobFinderService;
-import com.localjobs.service.JobFinderServiceImpl;
+import com.localjobs.service.LocalJobsService;
+import com.localjobs.service.LocalJobsServiceImpl;
 import com.mongodb.Mongo;
 
 import de.flapdoodle.embed.mongo.MongodExecutable;
@@ -27,20 +27,20 @@ import de.flapdoodle.embed.mongo.config.RuntimeConfig;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.extract.UserTempNaming;
 
-public class JobFinderServiceImplTest {
+public class LocalJobsServiceImplTest {
 
 	private static final String MONGODB_HOST = System
 			.getenv("OPENSHIFT_INTERNAL_IP") == null ? "localhost" : System
 			.getenv("OPENSHIFT_INTERNAL_IP");
 	private static final int MONGODB_PORT = 15000;
-	private static final String DB_NAME = "jobfinder";
+	private static final String DB_NAME = "localjobs";
 
 	private static MongodProcess mongoProcess;
 	private static Mongo mongo;
 
 	private MongoTemplate mongoTemplate;
 
-	private JobFinderService jobFinderService;
+	private LocalJobsService localJobsService;
 
 	@BeforeClass
 	public static void initializeDB() throws IOException {
@@ -67,7 +67,7 @@ public class JobFinderServiceImplTest {
 	@Before
 	public void setUp() throws Exception {
 		mongoTemplate = new MongoTemplate(mongo, DB_NAME);
-		jobFinderService = new JobFinderServiceImpl(mongoTemplate);
+		localJobsService = new LocalJobsServiceImpl(mongoTemplate);
 
 		List<Job> jobs = jobsTestData();
 		mongoTemplate.insertAll(jobs);
@@ -102,7 +102,7 @@ public class JobFinderServiceImplTest {
 
 	@Test
 	public void testFindAllJobs() {
-		List<Job> allJobs = jobFinderService.findAllJobs();
+		List<Job> allJobs = localJobsService.findAllJobs();
 		assertEquals(5, allJobs.size());
 	}
 
@@ -111,7 +111,7 @@ public class JobFinderServiceImplTest {
 		Job job1 = new Job("1","Job Title1",
 				new String[] { "java", "mongodb" },new double[]{33.978622, -118.404471});
 		
-		Job job = jobFinderService.findOneJob("1");
+		Job job = localJobsService.findOneJob("1");
 		assertEquals(job1, job);
 	}
 
@@ -119,23 +119,23 @@ public class JobFinderServiceImplTest {
 	public void shouldFindJobsNearToLocation() {
 		Job job1 = new Job("1","Job Title1",
 				new String[] { "java", "mongodb" },new double[]{33.978622, -118.404471});
-		List<Job> allJobsNear = jobFinderService.findAllJobsNear(33.978622, -118.404471);
+		List<Job> allJobsNear = localJobsService.findAllJobsNear(33.978622, -118.404471);
 		assertEquals(5, allJobsNear.size());
 		assertEquals(job1, allJobsNear.get(0));
 	}
 
 	@Test
 	public void shouldFindJobsNearToLocationWithASkill() {
-		List<Job> allJobsNearWithSkill = jobFinderService.findAllJobsNearWithSkill(33.978622, -118.404471, new String[]{"java"},"test1");
+		List<Job> allJobsNearWithSkill = localJobsService.findAllJobsNearWithSkill(33.978622, -118.404471, new String[]{"java"},"test1");
 		assertEquals(1, allJobsNearWithSkill.size());
 	}
 	
 	@Test
 	public void shouldRecommendJobsBasedOnSkillsAndLocation() throws Exception{
-		List<Job> recommededJobs = jobFinderService.recommendJobs(33.978622, -118.404471, new String[]{"java","mongodb"}, "test");
+		List<Job> recommededJobs = localJobsService.recommendJobs(33.978622, -118.404471, new String[]{"java","mongodb"}, "test");
 		assertEquals(2, recommededJobs.size());
 		
-		recommededJobs = jobFinderService.recommendJobs(33.978622, -118.404471, new String[]{"scala","redis"}, "test");
+		recommededJobs = localJobsService.recommendJobs(33.978622, -118.404471, new String[]{"scala","redis"}, "test");
 		assertEquals(2, recommededJobs.size());
 	}
 

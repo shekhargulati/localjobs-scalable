@@ -8,7 +8,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>JobFinder : Helps you find right jobs near your location</title>
+    <title>LocalJobs : Helps you find right jobs near your location</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -90,13 +90,13 @@
           
          </sec:authorize>
         </ul>
-        <h3 class="muted">JobFinder</h3>
+        <h3 class="muted">LocalJobs</h3>
       </div>
 
       <hr>
 
       <div class="jumbotron">
-        <h1>About the JobFinder Application!</h1>
+        <h1>About the LocalJobs Application!</h1>
         <p class="lead">The application is build using Spring, MongoDB, PostgreSQL and deployed on OpenShift.</p>
 
       <hr>

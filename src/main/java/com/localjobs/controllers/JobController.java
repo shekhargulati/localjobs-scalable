@@ -24,14 +24,14 @@ import com.localjobs.googleapis.DistanceResponse;
 import com.localjobs.googleapis.GoogleDistanceClient;
 import com.localjobs.jdbc.repository.AccountRepository;
 import com.localjobs.service.CoordinateFinder;
-import com.localjobs.service.JobFinderService;
+import com.localjobs.service.LocalJobsService;
 import com.localjobs.utils.SecurityUtils;
 
 @Controller
 public class JobController {
 
 	@Inject
-	private JobFinderService jobFinderService;
+	private LocalJobsService localJobsService;
 
 	@Inject
 	private GoogleDistanceClient googleDistanceClient;
@@ -46,14 +46,14 @@ public class JobController {
 	public ResponseEntity<String> allJobs() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
-		List<Job> jobs = jobFinderService.findAllJobs();
+		List<Job> jobs = localJobsService.findAllJobs();
 		return new ResponseEntity<String>(Job.toJsonArray(jobs), headers,
 				HttpStatus.OK);
 	}
 
 	@RequestMapping("/jobs/{jobId}")
 	public ResponseEntity<String> oneJob(@PathVariable("jobId") String jobId) {
-		Job job = jobFinderService.findOneJob(jobId);
+		Job job = localJobsService.findOneJob(jobId);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 		if (job == null) {
@@ -64,7 +64,7 @@ public class JobController {
 
 	@RequestMapping(value = "/jobs", method = RequestMethod.POST)
 	public ResponseEntity<String> createNewJob(@Valid Job job) {
-		jobFinderService.saveJob(job);
+		localJobsService.saveJob(job);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 		return new ResponseEntity<String>(job.toJson(), headers,
@@ -73,13 +73,13 @@ public class JobController {
 
 	@RequestMapping(value = "/jobs/{jobId}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteJob(@PathVariable("jobId") String jobId) {
-		Job job = jobFinderService.findOneJob(jobId);
+		Job job = localJobsService.findOneJob(jobId);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 		if (job == null) {
 			return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
 		}
-		jobFinderService.deleteJob(job);
+		localJobsService.deleteJob(job);
 		headers.add("Content-Type", "application/json; charset=utf-8");
 		return new ResponseEntity<String>(headers, HttpStatus.OK);
 	}
@@ -93,7 +93,7 @@ public class JobController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 
-		List<Job> jobs = jobFinderService.findAllJobsNear(latitude, longitude);
+		List<Job> jobs = localJobsService.findAllJobsNear(latitude, longitude);
 		List<JobDistanceVo> jobsVO = new ArrayList<JobDistanceVo>();
 		for (Job localJob : jobs) {
 			DistanceResponse response = googleDistanceClient.findDirections(
@@ -163,13 +163,13 @@ public class JobController {
 	@RequestMapping(value = "/jobs/apply/{jobId}", method = RequestMethod.POST)
 	public String applyJob(@PathVariable("jobId") String jobId) {
 		String username = SecurityUtils.getCurrentLoggedInUsername();
-		jobFinderService.appyJob(jobId, username);
+		localJobsService.appyJob(jobId, username);
 		return "redirect:/home";
 	}
 
 	private List<JobDistanceVo> findJobs(String[] skills, double latitude,
 			double longitude) {
-		List<Job> jobs = jobFinderService.findAllJobsNearWithSkill(latitude,
+		List<Job> jobs = localJobsService.findAllJobsNearWithSkill(latitude,
 				longitude, skills, SecurityUtils.getCurrentLoggedInUsername());
 		List<JobDistanceVo> locaJobsWithDistance = new ArrayList<JobDistanceVo>();
 		for (Job localJob : jobs) {
@@ -186,7 +186,7 @@ public class JobController {
 
 	private List<JobDistanceVo> findJobsWithLocation(double latitude,
 			double longitude) {
-		List<Job> jobs = jobFinderService.findAllJobsNear(latitude, longitude);
+		List<Job> jobs = localJobsService.findAllJobsNear(latitude, longitude);
 		List<JobDistanceVo> locaJobsWithDistance = new ArrayList<JobDistanceVo>();
 		for (Job localJob : jobs) {
 			DistanceResponse response = googleDistanceClient.findDirections(
