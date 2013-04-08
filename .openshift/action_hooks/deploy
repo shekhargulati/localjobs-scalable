@@ -4,5 +4,7 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 set -x
-pwd
-psql -h $OPENSHIFT_POSTGRESQL_DB_HOST -p $OPENSHIFT_POSTGRESQL_DB_PORT -U $OPENSHIFT_POSTGRESQL_DB_USERNAME -w "$OPENSHIFT_POSTGRESQL_DB_PASSWORD" -d localjobs -f $OPENSHIFT_REPO_DIR/src/main/resources/create-tables.sql
+
+export PGPASSWORD=$OPENSHIFT_POSTGRESQL_DB_PASSWORD
+
+psql -h $OPENSHIFT_POSTGRESQL_DB_HOST -p $OPENSHIFT_POSTGRESQL_DB_PORT -U $OPENSHIFT_POSTGRESQL_DB_USERNAME -d $OPENSHIFT_APP_NAME -f $OPENSHIFT_REPO_DIR/src/main/resources/create-tables.sql
