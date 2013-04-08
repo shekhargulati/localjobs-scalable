@@ -9,13 +9,13 @@
 <c:url value="/search" var="searchUrl" />
 
 <form class="form-horizontal" class="form-search" action="${searchUrl}" method="POST">
-        <h2 class="form-search-heading">Search Jobs</h2>
-        <input type="text" class="input-block-level" placeholder="Comma Seperated List of Skills" name="skills" id="skills">
-         <textarea rows="5" class="input-block-level" placeholder="Address" name="address" id="address"></textarea>
+        <h2>Search Jobs</h2>
+        <input type="text" placeholder="Comma Seperated List of Skills" name="skills" id="skills">
+         <textarea rows="5" placeholder="Address" name="address" id="address"></textarea>
          <p class="lead">choose one of address or latitude and longitude</p>
-        <input type="text" class="input-block-level" placeholder="Latitude" name="latitude" id="latitude">
-        <input type="text" class="input-block-level" placeholder="Longitude" name="longitude" id="longitude">
-        <input type="text" class="input-block-level" placeholder="Within Distance (in kms)" name="withinDistance" id="withinDistance">
+        <input type="text" placeholder="Latitude" name="latitude" id="latitude">
+        <input type="text" placeholder="Longitude" name="longitude" id="longitude">
+        <input type="text" placeholder="Within Distance (in kms)" name="withinDistance" id="withinDistance">
        
         <button class="btn btn-large btn-primary" type="submit" id="searchJobs">Search Jobs</button>
 </form>
