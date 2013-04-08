@@ -17,54 +17,10 @@
 <link rel="stylesheet" href="<c:url value="/resources/page.css" />"
 	type="text/css" media="screen" />
 	
-<link rel="stylesheet" href="<c:url value="/resources/form.css" />"
-	type="text/css" media="screen" />
-
 <link rel="stylesheet"
 	href="<c:url value="/resources/messages/messages.css" />"
 	type="text/css" media="screen" />
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
-<style type="text/css">
-body {
-	padding-top: 20px;
-	padding-bottom: 40px;
-}
-
-/* Custom container */
-.container-narrow {
-	margin: 0 auto;
-	max-width: 700px;
-}
-
-.container-narrow>hr {
-	margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-	margin: 60px 0;
-	text-align: center;
-}
-
-.jumbotron h1 {
-	font-size: 72px;
-	line-height: 1;
-}
-
-.jumbotron .btn {
-	font-size: 21px;
-	padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-	margin: 60px 0;
-}
-
-.marketing p+h4 {
-	margin-top: 28px;
-}
-</style>
 
 <link href="/resources/css/bootstrap-responsive.min.css"
 	rel="stylesheet">
@@ -135,18 +91,11 @@ body {
 
 	<!-- Placed at the end of the document so the pages load faster -->
 
-	<script src="/resources/js/bootstrap-transition.js"></script>
-	<script src="/resources/js/bootstrap-alert.js"></script>
-	<script src="/resources/js/bootstrap-modal.js"></script>
-	<script src="/resources/js/bootstrap-dropdown.js"></script>
-	<script src="/resources/js/bootstrap-scrollspy.js"></script>
-	<script src="/resources/js/bootstrap-tab.js"></script>
-	<script src="/resources/js/bootstrap-tooltip.js"></script>
-	<script src="/resources/js/bootstrap-popover.js"></script>
-	<script src="/resources/js/bootstrap-button.js"></script>
-	<script src="/resources/js/bootstrap-collapse.js"></script>
-	<script src="/resources/js/bootstrap-carousel.js"></script>
-	<script src="/resources/js/bootstrap-typeahead.js"></script>
+		<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/bootswatch.js"></script>
 
 </body>
 </html>
