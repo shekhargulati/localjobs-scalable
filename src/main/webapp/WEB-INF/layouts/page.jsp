@@ -69,9 +69,12 @@
 		</div>
 		<hr></hr>
 		<sec:authorize access="isAuthenticated()">
-			<div id="leftNav">
-				<tiles:insertTemplate template="menu.jsp" />
-			</div>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="/connect">Connections</a></li>
+				<li><a href="/myprofile">My Profile</a></li>
+				<li><a href="/search">Search Jobs</a></li>
+			</ul>
 		</sec:authorize>
 
 		<div id="content" class="container">
