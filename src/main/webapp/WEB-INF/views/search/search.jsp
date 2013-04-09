@@ -23,32 +23,3 @@
 </form>
 
 <div id="results"></div>
-
-	<script type="text/x-mustache-template" id="job-template">
-
-    
-    <div class="jobBox">
-	   <h3>{{jobtitle}}</h3>
-       <p> {{company}} </p>
-      <address> {{address}} </address>
-	  <p> {{skills}}</p>
-	  <p> {{distance}} </p>
-    </div>
-    </script>
-    
-	<script src="/resources/js/jquery.tagsinput.js"></script>
-	<script type="text/javascript" src="/resources/js/jquery.loadmask.min.js"></script>
-	<script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATvS5bY-3CkeiedEWtr5WFHEQFOi-9uYs&sensor=true">
-    </script>
-	<script src="/resources/js/underscore.js"></script>
-	<script src="/resources/js/backbone.js"></script>
-	<script src="/resources/js/mustache.js"></script>
-	<script type="text/javascript">
-	$( document ).ready( function() {
-		$('#skills').tagsInput({
-			defaultText : "add skills"
-		});
-	});
-	</script>
-	<script src="/resources/js/app.js"></script>

@@ -3,7 +3,7 @@
 
 <tiles-definitions>
 
-	<definition name="search" extends="page">
+	<definition name="search" extends="search-layout">
 		<put-attribute name="content" value="/WEB-INF/views/search/search.jsp" />
 	</definition>
 
