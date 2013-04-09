@@ -13,7 +13,7 @@
 			el : $("#main"),
 			
 			events : {
-				"#findJobsButton submit" : "findJobs"
+				"submit" : "findJobs"
 			},
 			
 			render : function(){

@@ -8,16 +8,16 @@
 <meta name="author" content="">
 
 <!-- Le styles -->
-<link href="css/bootstrap.css" rel="stylesheet">
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
 <style type="text/css">
 body {
 	padding-top: 60px;
 	padding-bottom: 40px;
 }
 </style>
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/jquery.tagsinput.css" />
-<link href="css/jquery.loadmask.css" rel="stylesheet" type="text/css" />
+<link href="/resources/css/bootstrap-responsive.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/resources/css/jquery.tagsinput.css" />
+<link href="/resources/css/jquery.loadmask.css" rel="stylesheet" type="text/css" />
 
 <style>
 div.jobBox {
