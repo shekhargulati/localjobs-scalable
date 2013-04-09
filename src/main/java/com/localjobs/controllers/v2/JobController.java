@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.localjobs.domain.Job;
 
-@Controller
+@Controller("jobControllerV2")
 @RequestMapping("/api/jobs")
 public class JobController {
 
