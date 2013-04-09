@@ -69,11 +69,11 @@
 		</div>
 		<hr></hr>
 		<sec:authorize access="isAuthenticated()">
-			<ul class="nav nav-tabs" >
-				<li class="active" data-toggle="tab"><a href="/home">Home</a></li>
-				<li><a href="/connect" data-toggle="tab">Connections</a></li>
-				<li><a href="/myprofile" data-toggle="tab">My Profile</a></li>
-				<li><a href="/search" data-toggle="tab">Search Jobs</a></li>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="/connect">Connections</a></li>
+				<li><a href="/myprofile">My Profile</a></li>
+				<li><a href="/search">Search Jobs</a></li>
 			</ul>
 		</sec:authorize>
 

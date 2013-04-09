@@ -49,19 +49,19 @@
 		<div class="masthead">
 			<ul class="nav nav-pills pull-right">
 				<sec:authorize access="isAuthenticated()">
-					<li class="active"><a href="home" data-toggle="tab">Home</a></li>
+					<li class="active"><a href="home">Home</a></li>
 				</sec:authorize>
 
 				<sec:authorize access="!isAuthenticated()">
-					<li class="active"><a href="index.jsp" data-toggle="tab">Home</a></li>
+					<li class="active"><a href="index.jsp">Home</a></li>
 				</sec:authorize>
 
-				<li><a href="about.jsp" data-toggle="tab">About</a></li>
-				<li><a href="contact.jsp" data-toggle="tab">Contact</a></li>
+				<li><a href="about.jsp">About</a></li>
+				<li><a href="contact.jsp">Contact</a></li>
 
 				<sec:authorize access="isAuthenticated()">
 
-					<li><a href="signout" data-toggle="tab">Sign Out</a></li>
+					<li><a href="signout">Sign Out</a></li>
 
 				</sec:authorize>
 			</ul>
@@ -69,11 +69,11 @@
 		</div>
 		<hr></hr>
 		<sec:authorize access="isAuthenticated()">
-			<ul class="nav nav-tabs" >
-				<li class="active" data-toggle="tab"><a href="/home">Home</a></li>
-				<li><a href="/connect" data-toggle="tab">Connections</a></li>
-				<li><a href="/myprofile" data-toggle="tab">My Profile</a></li>
-				<li><a href="/search" data-toggle="tab">Search Jobs</a></li>
+			<ul class="nav nav-pills" >
+				<li class="active"><a href="/home">Home</a></li>
+				<li><a href="/connect">Connections</a></li>
+				<li><a href="/myprofile">My Profile</a></li>
+				<li><a href="/search">Search Jobs</a></li>
 			</ul>
 		</sec:authorize>
 
