@@ -8,14 +8,14 @@
 <meta name="author" content="">
 
 <!-- Le styles -->
-<link href="/resources/css/bootstrap.css" rel="stylesheet">
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
 body {
 	padding-top: 60px;
 	padding-bottom: 40px;
 }
 </style>
-<link href="/resources/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="/resources/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/resources/css/jquery.tagsinput.css" />
 <link href="/resources/css/jquery.loadmask.css" rel="stylesheet" type="text/css" />
 
@@ -128,7 +128,7 @@ div.jobBox {
 	<script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATvS5bY-3CkeiedEWtr5WFHEQFOi-9uYs&sensor=true">
     </script>
-	<script src="/resources/js/bootstrap.js"></script>
+	<script src="/resources/js/bootstrap.min.js"></script>
 	<script src="/resources/js/underscore.js"></script>
 	<script src="/resources/js/backbone.js"></script>
 	<script src="/resources/js/mustache.js"></script>
