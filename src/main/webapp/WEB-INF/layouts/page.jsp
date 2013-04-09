@@ -56,9 +56,6 @@
 					<li class="active"><a href="index.jsp">Home</a></li>
 				</sec:authorize>
 
-				<li><a href="about.jsp">About</a></li>
-				<li><a href="contact.jsp">Contact</a></li>
-
 				<sec:authorize access="isAuthenticated()">
 
 					<li><a href="signout">Sign Out</a></li>
@@ -82,12 +79,19 @@
 		</div>
 
 		<hr>
+		
+		<footer id="footer">
+			<div class="links">
+				<a href="http://whyjava.wordpress.com">Blog</a> 
+				<a href="https://twitter.com/shekhargulati">Twitter</a> 
+				<a href="https://github.com/shekhargulati">GitHub</a>
+			</div>
+			Made by <a href="https://twitter.com/shekhargulati/">Shekhar Gulati</a>. 
+			Contact him <a href="mailto:shekhargulati84@gmail.com">shekhargulati84@gmail.com</a>
+			Powered by <a href="https://openshift.redhat.com/" target="_blank">OpenShift</a><br />
 
-		<div class="footer">
-			<p>
-				Powered by <a href="https://openshift.redhat.com/" target="_blank">OpenShift</a>
-			</p>
-		</div>
+	   </footer>
+		
 
 	</div>
 	<!-- /container -->

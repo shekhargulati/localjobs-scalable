@@ -56,9 +56,6 @@
 					<li class="active"><a href="index.jsp">Home</a></li>
 				</sec:authorize>
 
-				<li><a href="about.jsp">About</a></li>
-				<li><a href="contact.jsp">Contact</a></li>
-
 				<sec:authorize access="isAuthenticated()">
 
 					<li><a href="signout">Sign Out</a></li>
