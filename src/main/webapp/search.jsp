@@ -22,7 +22,6 @@ body {
 <style>
 div.jobBox {
 	border : 1px solid black;
-	background-color : #fff;
 	float : bottom;
 	margin : 5px;
 	
