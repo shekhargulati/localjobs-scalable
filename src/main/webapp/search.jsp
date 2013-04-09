@@ -1,98 +1,110 @@
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<%@ page session="false"%>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>LocalJobs : Find jobs near to you</title>
+<title>LocalJobs : Helps you find right jobs near your location</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Le styles -->
-<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
-<style type="text/css">
-body {
-	padding-top: 60px;
-	padding-bottom: 40px;
-}
-</style>
-<link href="/resources/css/bootstrap-responsive.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/resources/css/jquery.tagsinput.css" />
-<link href="/resources/css/jquery.loadmask.css" rel="stylesheet" type="text/css" />
+<script src="resources/js/jquery.js"></script>
+<link rel="stylesheet" href="<c:url value="/resources/page.css" />"
+	type="text/css" media="screen" />
+<link rel="stylesheet"
+	href="<c:url value="/resources/messages/messages.css" />"
+	type="text/css" media="screen" />
 
-<style>
-div.jobBox {
-	border : 1px solid black;
-	float : bottom;
-	margin : 5px;
-	
-}
-</style>
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="/resources/css/bootstrap-responsive.min.css"
+	rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
-      <script src="/resources/js/html5shiv.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
 <!-- Fav and touch icons -->
+<link rel="shortcut icon" href="/resources/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="ico/apple-touch-icon-144-precomposed.png">
+	href="/resources/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="ico/apple-touch-icon-114-precomposed.png">
+	href="/resources/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="ico/apple-touch-icon-72-precomposed.png">
+	href="/resources/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
-	href="ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="ico/favicon.png">
+	href="/resources/ico/apple-touch-icon-57-precomposed.png">
 </head>
 
 <body>
 
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<button type="button" class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="brand" href="#">LocalJobs</a>
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li class="active"><a href="#">Home</a></li>
-					</ul>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
+	<div class="container-narrow">
+
+		<div class="masthead">
+			<ul class="nav nav-pills pull-right">
+				<sec:authorize access="isAuthenticated()">
+					<li class="active"><a href="home">Home</a></li>
+				</sec:authorize>
+
+				<sec:authorize access="!isAuthenticated()">
+					<li class="active"><a href="index.jsp">Home</a></li>
+				</sec:authorize>
+
+				<sec:authorize access="isAuthenticated()">
+
+					<li><a href="signout">Sign Out</a></li>
+
+				</sec:authorize>
+			</ul>
+			<h3 class="muted">LocalJobs</h3>
 		</div>
-	</div>
+		<hr></hr>
+		<sec:authorize access="isAuthenticated()">
+			<ul class="nav nav-pills">
+				<li class="active"><a href="/home">Home</a></li>
+				<li><a href="/connect">Connections</a></li>
+				<li><a href="/myprofile">My Profile</a></li>
+				<li><a href="/search">Search Jobs</a></li>
+			</ul>
+		</sec:authorize>
+		s
 
-	<div id="main" class="container">
+		<div id="main" class="container">
 
 
-		<form id="jobSearchForm" class="form-horizontal">
-			<div class="control-group">
-				<div class="controls">
-					<input type="text" id="skills" name="skills" class="input-xlarge"
-						placeholder="Enter skills for which you want to search jobs" required>
+			<form id="jobSearchForm" class="form-horizontal">
+				<div class="control-group">
+					<div class="controls">
+						<input type="text" id="skills" name="skills" class="input-xlarge"
+							placeholder="Enter skills for which you want to search jobs"
+							required>
+					</div>
 				</div>
-			</div>
-			<div class="control-group">
-				<div class="controls">
-					<textarea rows="3" id="location" class="input-xlarge"
-						placeholder="Enter location near which you want to search jobs" required></textarea>
+				<div class="control-group">
+					<div class="controls">
+						<textarea rows="3" id="location" class="input-xlarge"
+							placeholder="Enter location near which you want to search jobs"
+							required></textarea>
+					</div>
 				</div>
-			</div>
-			<div class="control-group">
-				<div class="controls">
-					<button id="findJobsButton" type="submit" class="btn btn-success">Find Jobs</button>
+				<div class="control-group">
+					<div class="controls">
+						<button id="findJobsButton" type="submit" class="btn btn-success">Find
+							Jobs</button>
+					</div>
 				</div>
-			</div>
 
-		</form>
-		
-		<div id="results">
-		
+			</form>
+
 		</div>
+
+		<div id="results"></div>
 
 		<hr>
 
@@ -108,7 +120,7 @@ div.jobBox {
 		</footer>
 
 	</div>
-	
+
 	<script type="text/x-mustache-template" id="job-template">
 
     
@@ -120,27 +132,29 @@ div.jobBox {
 	  <p> {{distance}} </p>
     </div>
     </script>
-    
+
 	<script src="/resources/js/jquery.js"></script>
 	<script src="/resources/js/jquery.tagsinput.js"></script>
-	<script type="text/javascript" src="/resources/js/jquery.loadmask.min.js"></script>
 	<script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATvS5bY-3CkeiedEWtr5WFHEQFOi-9uYs&sensor=true">
-    </script>
+		src="/resources/js/jquery.loadmask.min.js"></script>
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATvS5bY-3CkeiedEWtr5WFHEQFOi-9uYs&sensor=true">
+		
+	</script>
 	<script src="/resources/js/bootstrap.min.js"></script>
 	<script src="/resources/js/underscore.js"></script>
 	<script src="/resources/js/backbone.js"></script>
 	<script src="/resources/js/mustache.js"></script>
 	<script type="text/javascript">
-	$( document ).ready( function() {
-		$('#skills').tagsInput({
-			defaultText : "add skills"
+		$(document).ready(function() {
+			$('#skills').tagsInput({
+				defaultText : "add skills"
+			});
 		});
-	});
 	</script>
 	<script src="/resources/js/app.js"></script>
-	
-	
+
+
 
 </body>
 </html>

@@ -7,7 +7,5 @@
 	</definition>
 	<definition name="page-connect" templateExpression="/WEB-INF/layouts/page-connect.jsp">
 	</definition>
-	<definition name="search-layout" templateExpression="/WEB-INF/layouts/search-page.jsp">
-	</definition>
         
 </tiles-definitions>
