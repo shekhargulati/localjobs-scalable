@@ -69,9 +69,12 @@
 		</div>
 		<hr></hr>
 		<sec:authorize access="isAuthenticated()">
-			<div id="leftNav">
-				<tiles:insertTemplate template="menu.jsp" />
-			</div>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="/connect">Connections</a></li>
+				<li><a href="/myprofile">My Profile</a></li>
+				<li><a href="/search">Search Jobs</a></li>
+			</ul>
 		</sec:authorize>
 
 		<div id="content" class="container">
@@ -96,6 +99,8 @@
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/bootswatch.js"></script>
+	<script src="resources/js/bootstrap-tab.js"></script>
+	<script src="resources/js/bootstrap-scrollspy.js"></script>
 
 </body>
 </html>

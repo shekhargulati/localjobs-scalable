@@ -109,19 +109,12 @@
     </div> <!-- /container -->
 
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="resources/js/jquery.js"></script>
-    <script src="resources/js/bootstrap-transition.js"></script>
-    <script src="resources/js/bootstrap-alert.js"></script>
-    <script src="resources/js/bootstrap-modal.js"></script>
-    <script src="resources/js/bootstrap-dropdown.js"></script>
-    <script src="resources/js/bootstrap-scrollspy.js"></script>
-    <script src="resources/js/bootstrap-tab.js"></script>
-    <script src="resources/js/bootstrap-tooltip.js"></script>
-    <script src="resources/js/bootstrap-popover.js"></script>
-    <script src="resources/js/bootstrap-button.js"></script>
-    <script src="resources/js/bootstrap-collapse.js"></script>
-    <script src="resources/js/bootstrap-carousel.js"></script>
-    <script src="resources/js/bootstrap-typeahead.js"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/bootswatch.js"></script>
+	<script src="resources/js/bootstrap-tab.js"></script>
+	<script src="resources/js/bootstrap-scrollspy.js"></script>
 
   </body>
 </html>

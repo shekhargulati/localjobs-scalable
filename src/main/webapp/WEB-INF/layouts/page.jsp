@@ -98,6 +98,8 @@
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/bootswatch.js"></script>
+	<script src="resources/js/bootstrap-tab.js"></script>
+	<script src="resources/js/bootstrap-scrollspy.js"></script>
 
 </body>
 </html>
