@@ -25,6 +25,21 @@
 <link href="/resources/css/bootstrap-responsive.min.css"
 	rel="stylesheet">
 
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/jquery.tagsinput.css" />
+<link href="/resources/css/jquery.loadmask.css" rel="stylesheet"
+	type="text/css" />
+	
+	
+<style>
+div.jobBox {
+	border : 1px solid black;
+	float : bottom;
+	margin : 5px;
+	
+}
+</style>
+
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
