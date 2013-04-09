@@ -88,7 +88,6 @@ div.jobBox {
 				<li><a href="/search">Search Jobs</a></li>
 			</ul>
 		</sec:authorize>
-		s
 
 		<div id="main" class="container">
 
