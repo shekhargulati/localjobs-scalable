@@ -16,7 +16,7 @@ public class SigninController {
 		if(StringUtils.isNotBlank(username)){
 			return "redirect:/home";
 		}
-		return "signin";
+		return null;
 		
 	}
 }
