@@ -85,9 +85,9 @@ public class HomeController {
 			double longitude, List<Job> jobs) {
 		List<JobDistanceVo> jobsDistanceVo = new ArrayList<JobDistanceVo>();
 		for (Job job : jobs) {
-			DistanceResponse response = googleDistanceClient.findDirections(
-					job.getLocation(),
-					new double[] { longitude, latitude });
+			double[] origin = {job.getLocation()[1], job.getLocation()[0]};
+			double[] destination = new double[] { latitude ,longitude};
+			DistanceResponse response = googleDistanceClient.findDirections(origin, destination);
 			JobDistanceVo vo = new JobDistanceVo(job,
 					response.rows[0].elements[0].distance,
 					response.rows[0].elements[0].duration);
