@@ -67,7 +67,7 @@
 		<hr></hr>
 		<sec:authorize access="isAuthenticated()">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#">Home</a></li>
+				<li class="active"><a href="/home">Home</a></li>
 				<li><a href="/connect">Connections</a></li>
 				<li><a href="/myprofile">My Profile</a></li>
 				<li><a href="/search">Location Aware Search</a></li>
