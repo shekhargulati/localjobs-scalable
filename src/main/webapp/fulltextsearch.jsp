@@ -93,25 +93,18 @@ div.jobBox {
 		<div id="main" class="container">
 
 
-			<form id="jobSearchForm" class="form-horizontal">
+			<form id="fullTextSearchForm" class="form-horizontal">
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" id="skills" name="skills" class="input-xlarge"
-							placeholder="Enter skills for which you want to search jobs"
+						<input type="text" id="query" name="query" class="input-xlarge"
+							placeholder="Lucene Query To Search Jobs"
 							required>
 					</div>
 				</div>
+				
 				<div class="control-group">
 					<div class="controls">
-						<textarea rows="3" id="location" class="input-xlarge"
-							placeholder="Enter location near which you want to search jobs"
-							required></textarea>
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="controls">
-						<button id="findJobsButton" type="submit" class="btn btn-success">Find
-							Jobs</button>
+						<button id="findJobsButton" type="submit" class="btn btn-success">Find Jobs</button>
 					</div>
 				</div>
 
@@ -167,7 +160,7 @@ div.jobBox {
 			});
 		});
 	</script>
-	<script src="/resources/js/app.js"></script>
+	<script src="/resources/js/fulltextsearch.js"></script>
 
 
 

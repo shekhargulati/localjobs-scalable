@@ -70,7 +70,8 @@
 				<li class="active"><a href="#">Home</a></li>
 				<li><a href="/connect">Connections</a></li>
 				<li><a href="/myprofile">My Profile</a></li>
-				<li><a href="/search">Search Jobs</a></li>
+				<li><a href="/search">Location Aware Search</a></li>
+				<li><a href="/fulltextsearch">Full Text Search</a></li>
 			</ul>
 		</sec:authorize>
 

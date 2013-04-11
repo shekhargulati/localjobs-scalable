@@ -56,6 +56,16 @@
 		<servlet-name>search</servlet-name>
 		<url-pattern>/search</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>fulltextsearch</servlet-name>
+		<jsp-file>/fulltextsearch.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>fulltextsearch</servlet-name>
+		<url-pattern>/fulltextsearch</url-pattern>
+	</servlet-mapping>
 
 	<!-- Ensure UTF-8 encoded pages so that certain characters are displayed 
 		and submitted correctly -->

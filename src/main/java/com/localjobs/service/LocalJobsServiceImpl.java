@@ -84,7 +84,7 @@ public class LocalJobsServiceImpl implements LocalJobsService {
 	public List<Job> recommendJobs(double latitude, double longitude,
 			String[] skills, String username) {
 		Query query = Query.query(
-				Criteria.where("location").near(new Point(latitude, longitude))
+				Criteria.where("location").near(new Point(longitude, latitude))
 						.and("skills").in(Arrays.asList(skills)).and("appliedBy").nin(username)).limit(5);
 		return mongoTemplate.find(query, Job.class);
 	}
