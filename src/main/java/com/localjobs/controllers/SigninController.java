@@ -18,7 +18,7 @@ public class SigninController {
 		String username = SecurityUtils.getCurrentLoggedInUsername();
 
 		System.out.println("Username .. " + username);
-		if (StringUtils.isNotBlank(username)) {
+		if (StringUtils.isNotBlank(username) && !StringUtils.equals(username, "anonymousUser")) {
 			response.sendRedirect("/home");
 		}
 
