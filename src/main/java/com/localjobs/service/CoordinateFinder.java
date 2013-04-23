@@ -1,5 +1,7 @@
 package com.localjobs.service;
 
+import java.util.Arrays;
+
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -45,6 +47,14 @@ public class CoordinateFinder {
 			i++;
 		}
 		return coordinates;
+	}
+	
+	
+	public static void main(String[] args) throws Exception {
+		CoordinateFinder finder = new CoordinateFinder();
+		double[] coordinates = finder.find("Crocus Expo ,MKAD 67 kilometr (vneshn.), Moscow , Russia");
+		
+		System.out.println(Arrays.toString(coordinates));
 	}
 
 }

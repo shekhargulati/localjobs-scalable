@@ -1,7 +1,7 @@
-create table Account (id SERIAL,username varchar unique,password varchar not null,firstName varchar not null, lastName varchar not null,address varchar not null,skills varchar not null, primary key (id));
-create table UserConnection (userId varchar(255) not null,
-	providerId varchar(255) not null,
-	providerUserId varchar(255),
+CREATE TABLE Account (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,username VARCHAR(100),password VARCHAR(100) not null,firstName VARCHAR(100) not null, lastName VARCHAR(100) not null,address VARCHAR(100) not null,skills VARCHAR(100) not null);
+create table UserConnection (userId varchar(100) not null,
+	providerId varchar(100) not null,
+	providerUserId varchar(100),
 	rank int not null,
 	displayName varchar(255),
 	profileUrl varchar(512),
